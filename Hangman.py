@@ -1,7 +1,7 @@
 import random
 
-#properties
-Movies = ["clash of the titans", "hot tub time machine", "back to the future", "how to train your dragon", "nightmare on elm street", "the king of staten island", "the assasination of jessie james"]
+#region properties
+Movies = []
 NumberOfTriesLeft = 10
 MovieToGuess = ""
 MovieToGuessHiddenLetters = []
@@ -10,12 +10,14 @@ MovieToGuessArray = []
 MovieCorrectlyGuessed = False
 NextAction = ""
 userGuessed = ""
+#end region
 
 #Handle selecting random from list
 def SelectRandomFromList(listToSelectFrom):
     selectedItem = random.choice(listToSelectFrom)
     return selectedItem
 
+#Handles randomly selecting movie to guess and displaying blank to guess  
 def CreateAndDisplayMovieToGuess():
     #Convert select movie to array.
     MovieToGuessArray = list(MovieToGuess)
@@ -82,7 +84,7 @@ def CheckIfStringIsEqualToMovieTitle(stringInput):
     global MovieCorrectlyGuessed
     if stringInput.lower() == MovieToGuess.lower():
         MovieCorrectlyGuessed = True
-        print("CORRECT!!!! The title is " + MovieToGuess + "...\n")
+        print("CORRECT!!!! The title is \"" + MovieToGuess + "\".\n")
     else:
         print("Wrong guess...")  
     NumberOfTriesLeft -= 5 
@@ -92,6 +94,8 @@ def ResetVariables():
     global NumberOfTriesLeft
     global MovieCorrectlyGuessed
     global userGuessed
+    global LettersCorrectlyGuessed
+    LettersCorrectlyGuessed = []
     MovieToGuess = ""
     NumberOfTriesLeft = 10
     MovieCorrectlyGuessed = False
@@ -119,7 +123,20 @@ def PlayGame():
             CreateAndDisplayMovieToGuess()
 
 #Main Program
-#Select random movie from List
+#Initialize movies to guess from
+Movies.append("clash of the titans")
+Movies.append("hot tub time machine")
+Movies.append("back to the future")
+Movies.append("how to train your dragon")
+Movies.append("nightmare on elm street")
+Movies.append("the king of staten island")
+Movies.append("the assasination of jessie james")
+Movies.append("starwars empire strikes back")
+Movies.append("terminator judgement day")
+Movies.append("the dark knight ")
+Movies.append("saving private ryan")
+Movies.append("the good the bad and the ugly")
+
 PlayGame()
 print("\nPress\np - play again\nx - enter\n")     
 NextAction = input().lower()
@@ -128,9 +145,6 @@ while NextAction != "x":
     print("\nPress\np - play again\nx - enter\n")     
     NextAction = input().lower()
 
-#TODO - play again
-
-#TODO - while loop, ask user to guess a letter while number of guesses is less than allowed or guess to whole title 
 
 
 
